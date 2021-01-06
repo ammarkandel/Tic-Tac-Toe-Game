@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+class TicTacToeGame
+  attr_accessor :board
+  def start_game
+     puts "Type number from 1 to 9"
+     player_number = gets.chomp.to_i
+     puts "Please type number between 1 to 9" if player_number > 9 || player_number < 1
+     board_interface
+  end
+  def initialize
+    @board = ["", "", "", "", "", "", "", "", ""]
+  end
+
+  def board_interface
+     puts "#{@board[0]}   ||   #{@board[1]}   ||   #{@board[2]}"
+     puts "#{@board[3]}   ||   #{@board[4]}   ||   #{@board[5]}"
+     puts "#{@board[6]}   ||   #{@board[7]}   ||   #{@board[8]}"
+  end
+end
+
+game = TicTacToeGame.new
+
+game.start_game
