@@ -25,12 +25,13 @@ class TicTacToeGame
   def check_result; end
 
   def start_game
-    while puts 'Type number from 1 to 9' # while no one of players win then puts
+    @board.each do |_item|
+      puts 'Type number from 1 to 9'
       # get the user input
       @player_number = gets.chomp.to_i
-      check_number # check if the player input is valid
+      # check if the player input is valid
+      check_number
       p board_interface
-      # break if one of players win or board is fill
     end
   end
 end
