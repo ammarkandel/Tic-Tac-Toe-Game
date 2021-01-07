@@ -12,7 +12,6 @@ class TicTacToeGame
     puts "#{@board[6]} || #{@board[7]}  || #{@board[8]}"
   end
 
-  # may add check method here
   def check_number
     if (1..9).cover?(@player_number)
       @board[@player_number - 1] = @player_number.odd? ? 'X' : 'O'
