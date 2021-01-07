@@ -2,24 +2,39 @@
 class TicTacToeGame
   attr_accessor :board
 
-  def start_game
-    puts 'Type number from 1 to 9'
-    player_number = gets.chomp.to_i
-    puts 'Please type number between 1 to 9' if player_number > 9 || player_number < 1
-    board_interface
-  end
-
   def initialize
-    @board = ['', '', '', '', '', '', '', '', '']
+    @board = ['', '', '', '', '', '', '', '']
   end
 
   def board_interface
-    puts "#{@board[0]}   ||   #{@board[1]}   ||   #{@board[2]}"
-    puts "#{@board[3]}   ||   #{@board[4]}   ||   #{@board[5]}"
-    puts "#{@board[6]}   ||   #{@board[7]}   ||   #{@board[8]}"
+    puts "#{@board[0]} || #{@board[1]}  || #{@board[2]}"
+    puts "#{@board[3]} || #{@board[4]}  || #{@board[5]}"
+    puts "#{@board[6]} || #{@board[7]}  || #{@board[8]}"
+  end
+
+  # may add check method here
+  def check_number
+    if (1..9).cover?(@player_number)
+      @board[@player_number - 1] = @player_number.odd? ? 'X' : 'O'
+    else
+      puts 'please add number between 1 to 9'
+    end
+  end
+
+  # check the result of the game
+  def check_result; end
+
+  def start_game
+    # while no one of players win
+    while puts 'Type number from 1 to 9'
+      # get the user input
+      @player_number = gets.chomp.to_i
+      check_number # check if the player input is valid
+      p board_interface
+      # break if one of players win or board is fill
+    end
   end
 end
-
 game = TicTacToeGame.new
 
 game.start_game
