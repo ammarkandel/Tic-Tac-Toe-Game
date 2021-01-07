@@ -3,7 +3,7 @@ class TicTacToeGame
   attr_accessor :board
 
   def initialize
-    @board = ['', '', '', '', '', '', '', '']
+    @board = ['', '', '', '', '', '', '', '', '']
   end
 
   def board_interface
