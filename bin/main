@@ -34,17 +34,18 @@ class TicTacToeGame
     @board.each do
       # get the user input
       @player_number = gets.chomp.to_i
+      # check if number is invalid
+      p invalid
       @unavailable << @player_number
       p "these available numbers for next player #{@available - @unavailable}"
       # check if the player input is valid
       check_number
-      p invalid
       p board_interface
     end
   end
 
   def invalid
-    # Check InValid For unavailable
+    "#{@player_number} is invalid number" if @unavailable.include?(@player_number)
   end
 end
 game = TicTacToeGame.new
