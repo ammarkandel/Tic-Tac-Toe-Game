@@ -14,26 +14,37 @@ class TicTacToeGame
 
   def check_number
     if (1..9).cover?(@player_number)
-      @board[@player_number - 1] = @player_number.odd? ? 'X' : 'O'
+      if @player_number.odd?
+        @board[@player_number - 1] = 'X'
+        puts 'player one played time for player two'
+      else
+        @board[@player_number - 1] = 'O'
+        puts 'player two played time for player one'
+      end
     else
       puts 'please add number between 1 to 9'
     end
   end
 
-  # check the result of the game
-  def check_result
-    # win cases (0,1,2) (3,4,5) (6,7,8) (0,4,8) (2,4,6) (0,3,6) (1,4,7) (2,5,8)
-  end
-
   def start_game
-    @board.each do |_item|
-      puts 'Type number from 1 to 9'
+    puts 'Type number from 1 to 9'
+    puts 'Choice odd number for "X" and even number for "O"'
+    @available = (1..9).to_a
+    @unavailable = []
+    @board.each do
       # get the user input
       @player_number = gets.chomp.to_i
+      @unavailable << @player_number
+      p "these available numbers for next player #{@available - @unavailable}"
       # check if the player input is valid
       check_number
+      p invalid
       p board_interface
     end
+  end
+
+  def invalid
+    # Check InValid For unavailable
   end
 end
 game = TicTacToeGame.new
