@@ -1,5 +1,4 @@
-#!/usr/bin/env ruby
-class TicTacToeGame
+class TicTacToe
   attr_accessor :board
 
   def initialize
@@ -12,42 +11,58 @@ class TicTacToeGame
     puts "#{@board[6]} || #{@board[7]}  || #{@board[8]}"
   end
 
-  def check_number
-    if (1..9).cover?(@player_number)
-      if @player_number.odd?
-        @board[@player_number - 1] = 'X'
-        puts 'player one played time for player two'
-      else
-        @board[@player_number - 1] = 'O'
-        puts 'player two played time for player one'
-      end
-    else
-      puts 'please add number between 1 to 9'
-    end
+  # win cases
+  def win
+    return true if (@board[0] = @board[1] = @board[2]).eql? 'X' && 'O'
+    return true if (@board[3] = @board[4] = @board[5]).eql? 'X' && 'O'
+    return true if (@board[6] = @board[7] = @board[8]).eql? 'X' && 'O'
+    return true if (@board[0] = @board[4] = @board[8]).eql? 'X' && 'O'
+    return true if (@board[2] = @board[4] = @board[6]).eql? 'X' && 'O'
+    return true if (@board[2] = @board[5] = @board[8]).eql? 'X' && 'O'
+    return true if (@board[1] = @board[4] = @board[7]).eql? 'X' && 'O'
+    return true if (@board[0] = @board[3] = @board[6]).eql? 'X' && 'O'
+
+    false
+  end
+
+  # we will work on avaliable and unavaliable
+  def draw
+    win ? false : true
   end
 
   def start_game
-    puts 'Type number from 1 to 9'
-    puts 'Choice odd number for "X" and even number for "O"'
-    @available = (1..9).to_a
+    win
+    draw
+    @all_numbers = (1..9).to_a
     @unavailable = []
-    @board.each do
-      # get the user input
+    until win
+      puts 'Type number from 1 to 9'
       @player_number = gets.chomp.to_i
-      # check if number is invalid
       p invalid
       @unavailable << @player_number
-      p "these available numbers for next player #{@available - @unavailable}"
-      # check if the player input is valid
-      check_number
+      @avaliable = @all_numbers - @unavailable
+      p "These numbers are avaliable for next player #{@avaliable}"
       p board_interface
+      if win
+        p 'You Win'
+        break
+      elsif @avaliable.empty?
+        if win
+          p 'You win'
+        else
+          p 'draw'
+        end
+        break
+      end
     end
   end
 
   def invalid
-    "#{@player_number} is invalid number" if @unavailable.include?(@player_number)
+    if @unavailable.include?(@player_number) || !(1..9).cover?(@player_number)
+      "Number #{@player_number} is invalid number."
+    end
   end
 end
-game = TicTacToeGame.new
 
-game.start_game
+game = TicTacToe.new
+p game.start_game
