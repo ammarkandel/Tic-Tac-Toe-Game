@@ -14,22 +14,18 @@ class TicTacToe
     puts "#{@board[6]} | #{@board[7]}  | #{@board[8]}"
   end
 
-  def first_win_cases
-    true if (@board[0] = @board[1] = @board[2]).eql?('X' && 'O')
-    true if (@board[3] = @board[4] = @board[5]).eql?('X' && 'O')
-    true if (@board[6] = @board[7] = @board[8]).eql?('X' && 'O')
-  end
-
   # win cases
-  def win
-    first_win_cases
-    true if (@board[0] = @board[4] = @board[8]).eql?('X' && 'O')
-    true if (@board[2] = @board[4] = @board[6]).eql?('X' && 'O')
-    true if (@board[2] = @board[5] = @board[8]).eql?('X' && 'O')
-    true if (@board[1] = @board[4] = @board[7]).eql?('X' && 'O')
-    true if (@board[0] = @board[3] = @board[6]).eql?('X' && 'O')
-    false
-  end
+  #def win
+  #  true if (@board[0] = @board[1] = @board[2]).eql?('X' && 'O')
+  #  true if (@board[3] = @board[4] = @board[5]).eql?('X' && 'O')
+  #  true if (@board[6] = @board[7] = @board[8]).eql?('X' && 'O')
+  #  true if (@board[0] = @board[4] = @board[8]).eql?('X' && 'O')
+  #  true if (@board[2] = @board[4] = @board[6]).eql?('X' && 'O')
+  #  true if (@board[2] = @board[5] = @board[8]).eql?('X' && 'O')
+  #  true if (@board[1] = @board[4] = @board[7]).eql?('X' && 'O')
+  #  true if (@board[0] = @board[3] = @board[6]).eql?('X' && 'O')
+  #  false
+  #end
 
   # draw
   def draw
