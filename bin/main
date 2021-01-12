@@ -15,7 +15,7 @@ class TicTacToe
   end
 
   # win cases
-  #def win
+  # def win
   #  true if (@board[0] = @board[1] = @board[2]).eql?('X' && 'O')
   #  true if (@board[3] = @board[4] = @board[5]).eql?('X' && 'O')
   #  true if (@board[6] = @board[7] = @board[8]).eql?('X' && 'O')
@@ -25,7 +25,7 @@ class TicTacToe
   #  true if (@board[1] = @board[4] = @board[7]).eql?('X' && 'O')
   #  true if (@board[0] = @board[3] = @board[6]).eql?('X' && 'O')
   #  false
-  #end
+  # end
 
   # draw
   def draw
@@ -56,9 +56,7 @@ class TicTacToe
   end
 
   def invalid
-    if @unavailable.include?(@player_number) || !(1..9).cover?(@player_number)
-      "Number #{@player_number} is invalid number."
-    end
+   ("Number #{@player_number} is invalid number." unless @unavailable.include?(@player_number) || !(1..9).cover?(@player_number))
   end
 end
 
