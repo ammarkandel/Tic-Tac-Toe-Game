@@ -56,7 +56,8 @@ class TicTacToe
   end
 
   def invalid
-   ("Number #{@player_number} is invalid number." unless @unavailable.include?(@player_number) || !(1..9).cover?(@player_number))
+   ("Number #{@player_number} is invalid number." unless @unavailable.include?
+   (@player_number) || !(1..9).cover?(@player_number))
   end
 end
 
