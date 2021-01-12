@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
 #!/usr/bin/env ruby
 class TicTacToe
   attr_accessor :board
@@ -69,3 +71,5 @@ end
 
 game = TicTacToe.new
 p game.start_game
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
