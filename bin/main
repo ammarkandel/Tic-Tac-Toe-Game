@@ -16,14 +16,14 @@ class TicTacToe
 
   # win cases
   def win
-    return true if (@board[0] = @board[1] = @board[2]).eql? "X" && "O"
-    return true if (@board[3] = @board[4] = @board[5]).eql? "X" && "O"
-    return true if (@board[6] = @board[7] = @board[8]).eql? "X" && "O"
-    return true if (@board[0] = @board[4] = @board[8]).eql? "X" && "O"
-    return true if (@board[2] = @board[4] = @board[6]).eql? "X" && "O"
-    return true if (@board[2] = @board[5] = @board[8]).eql? "X" && "O"
-    return true if (@board[1] = @board[4] = @board[7]).eql? "X" && "O"
-    return true if (@board[0] = @board[3] = @board[6]).eql? "X" && "O"
+    return true if (@board[0] = @board[1] = @board[2]).eql? 'X' && 'O'
+    return true if (@board[3] = @board[4] = @board[5]).eql? 'X' && 'O'
+    return true if (@board[6] = @board[7] = @board[8]).eql? 'X' && 'O'
+    return true if (@board[0] = @board[4] = @board[8]).eql? 'X' && 'O'
+    return true if (@board[2] = @board[4] = @board[6]).eql? 'X' && 'O'
+    return true if (@board[2] = @board[5] = @board[8]).eql? 'X' && 'O'
+    return true if (@board[1] = @board[4] = @board[7]).eql? 'X' && 'O'
+    return true if (@board[0] = @board[3] = @board[6]).eql? 'X' && 'O'
 
     false
   end
