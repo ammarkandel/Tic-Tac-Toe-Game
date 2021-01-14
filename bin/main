@@ -44,12 +44,12 @@ class TicTacToe
   end
 
   def check_which_win
-    if @count_win_x < 3 && @count_win_o < 3
-      @count_win_x = 0
-      @count_win_o = 0
-      @every_move += 1
-      true
-    end
+    return unless @count_win_x < 3 && @count_win_o < 3
+
+    @count_win_x = 0
+    @count_win_o = 0
+    @every_move += 1
+    true
   end
 
   def win
