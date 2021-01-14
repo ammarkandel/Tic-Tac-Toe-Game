@@ -64,7 +64,12 @@ class TicTacToe
   end
 
   def check_winer
-    @count_win_x > @count_win_o || @count_win_x < @count_win_o ? true : false
+    if @count_win_x > @count_win_o || @count_win_x < @count_win_o
+      p 'You Win'
+      true
+    else
+      false
+    end
   end
 
   # End Check winer player
