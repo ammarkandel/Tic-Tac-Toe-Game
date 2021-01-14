@@ -14,50 +14,105 @@ class TicTacToe
     puts "#{@board[6]} | #{@board[7]}  | #{@board[8]}"
   end
 
-  # win cases
-  # def win
-  #  true if (@board[0] = @board[1] = @board[2]).eql?('X' && 'O')
-  #  true if (@board[3] = @board[4] = @board[5]).eql?('X' && 'O')
-  #  true if (@board[6] = @board[7] = @board[8]).eql?('X' && 'O')
-  #  true if (@board[0] = @board[4] = @board[8]).eql?('X' && 'O')
-  #  true if (@board[2] = @board[4] = @board[6]).eql?('X' && 'O')
-  #  true if (@board[2] = @board[5] = @board[8]).eql?('X' && 'O')
-  #  true if (@board[1] = @board[4] = @board[7]).eql?('X' && 'O')
-  #  true if (@board[0] = @board[3] = @board[6]).eql?('X' && 'O')
-  #  false
-  # end
+  # Start Check winer player
 
-  # draw
-  def draw
-    win ? false : true
+  def win_case
+    @win_cases = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+      [2, 5, 8],
+      [1, 4, 7],
+      [0, 3, 6]
+    ]
+  end
+
+  def win_var
+    @count_win_x = 0
+    @count_win_o = 0
+    @every_move = 0
+    @win_leng = @win_cases.length
+  end
+
+  def loop_on_cases
+    @win_cases[@every_move].each do |item|
+      @count_win_x += 1 if @board[item] == 'X'
+      @count_win_o += 1 if @board[item] == 'O'
+    end
+  end
+
+  def check_which_win
+    if @count_win_x < 3 && @count_win_o < 3
+      @count_win_x = 0
+      @count_win_o = 0
+      @every_move += 1
+      true
+    end
+  end
+
+  def win
+    win_case
+    win_var
+    loop do
+      loop_on_cases
+      break unless check_which_win # check_which_win (break)
+      break if @every_move == @win_leng
+    end
+    check_winer
+  end
+
+  def check_winer
+    @count_win_x > @count_win_o || @count_win_x < @count_win_o ? true : false
+  end
+
+  # End Check winer player
+
+  def game_numbers
+    @all_numbers = (1..9).to_a
+    @already_used = [0]
+  end
+
+  def win_methods
+    player_input
+    invalid
+    avaliable_inputs
+    p board_interface
   end
 
   def start_game
-    win
-    draw
-    @all_numbers = (1..9).to_a
-    @unavailable = []
+    game_numbers
     until win
-      puts 'Type number from 1 to 9'
-      @player_number = gets.chomp.to_i
-      p invalid
-      @unavailable << @player_number
-      @avaliable = @all_numbers - @unavailable
-      p "These numbers are avaliable for next player #{@avaliable}"
-      p board_interface
-      if win
-        p 'You Win'
-        break
-      elsif @avaliable.empty?
-        p win ? 'You win' : 'draw'
+      win_methods
+      break if win
+
+      if @avaliable.empty?
+        p 'draw'
         break
       end
     end
   end
 
+  def player_input
+    puts 'Type number from 1 to 9'
+    @player_number = gets.chomp.to_i
+  end
+
+  def avaliable_inputs
+    @already_used << @player_number
+    @avaliable = @all_numbers - @already_used
+    p "These numbers are avaliable for next player #{@avaliable}"
+  end
+
   def invalid
-    ("Number #{@player_number} is invalid number." unless @unavailable.include?
-     @player_number || !(1..9).cover?(@player_number))
+    if @already_used.include?(@player_number) || !(1..9).cover?(@player_number)
+      p "Number #{@player_number} is invalid number."
+    else
+      @already_used.each_index do |index|
+        @board[@player_number - 1] = index.odd? ? 'O' : 'X'
+      end
+    end
   end
 end
 
