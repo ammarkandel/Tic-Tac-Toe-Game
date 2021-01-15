@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require_relative '../lib/check_game_result'
 class TicTacToe
   attr_accessor :board
 
@@ -14,71 +15,12 @@ class TicTacToe
     puts "#{@board[6]} | #{@board[7]}  | #{@board[8]}"
   end
 
-  # Start Check winer player
-
-  def win_case
-    @win_cases = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-      [2, 5, 8],
-      [1, 4, 7],
-      [0, 3, 6]
-    ]
+  def winer
+    check_game_result = CheckGameResult.new(@board)
+    check_game_result.win
   end
 
-  def win_var
-    @count_win_x = 0
-    @count_win_o = 0
-    @every_move = 0
-    @win_leng = @win_cases.length
-  end
-
-  def loop_on_cases
-    @win_cases[@every_move].each do |item|
-      @count_win_x += 1 if @board[item] == 'X'
-      @count_win_o += 1 if @board[item] == 'O'
-    end
-  end
-
-  def check_which_win
-    return unless @count_win_x < 3 && @count_win_o < 3
-
-    @count_win_x = 0
-    @count_win_o = 0
-    @every_move += 1
-    true
-  end
-
-  def win
-    win_case
-    win_var
-    loop do
-      loop_on_cases
-      break unless check_which_win # check_which_win (break)
-      break if @every_move == @win_leng
-    end
-    check_winer
-  end
-
-  def check_winer
-    if @count_win_x > @count_win_o || @count_win_x < @count_win_o
-      p 'You Win'
-      true
-    else
-      false
-    end
-  end
-
-  # End Check winer player
-
-  def game_numbers
-    @all_numbers = (1..9).to_a
-    @already_used = [0]
-  end
-
+  # Start
   def win_methods
     player_input
     invalid
@@ -86,11 +28,22 @@ class TicTacToe
     p board_interface
   end
 
+  def game_numbers
+    @all_numbers = (1..9).to_a
+    @already_used = [0]
+  end
+
+  def avaliable_inputs
+    @already_used << @player_number
+    @avaliable = @all_numbers - @already_used
+    p "These numbers are avaliable for next player #{@avaliable}"
+  end
+
   def start_game
     game_numbers
-    until win
+    until winer
       win_methods
-      break if win
+      break if winer
 
       if @avaliable.empty?
         p 'draw'
@@ -104,12 +57,6 @@ class TicTacToe
     @player_number = gets.chomp.to_i
   end
 
-  def avaliable_inputs
-    @already_used << @player_number
-    @avaliable = @all_numbers - @already_used
-    p "These numbers are avaliable for next player #{@avaliable}"
-  end
-
   def invalid
     if @already_used.include?(@player_number) || !(1..9).cover?(@player_number)
       p "Number #{@player_number} is invalid number."
@@ -119,6 +66,7 @@ class TicTacToe
       end
     end
   end
+  # End
 end
 
 game = TicTacToe.new
