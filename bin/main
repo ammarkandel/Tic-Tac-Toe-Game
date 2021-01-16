@@ -61,11 +61,12 @@ class TicTacToe
     if @already_used.include?(@player_number) || !(1..9).cover?(@player_number)
       p "Number #{@player_number} is invalid number."
     else
-      @already_used.each_index do |index|
+      @already_used.uniq.each_index do |index|
         @board[@player_number - 1] = index.odd? ? 'O' : 'X'
       end
     end
   end
+
   # End
 end
 
