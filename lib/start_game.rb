@@ -4,7 +4,7 @@ module StartGame
     player_input
     invalid
     avaliable_inputs
-    p board_interface
+    board_interface
   end
 
   include StartGameVar
