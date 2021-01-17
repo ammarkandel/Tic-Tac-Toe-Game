@@ -10,6 +10,7 @@ module StartGame
   include StartGameVar
 
   def start_game
+    p 'Type number from 1 to 9'
     game_numbers
     until winer
       win_methods

@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require_relative '../lib/check_game_result'
 require_relative '../lib/start_game'
+require_relative '../lib/check_invalid'
 class TicTacToe
   attr_reader :board
 
@@ -22,22 +23,10 @@ class TicTacToe
   end
 
   def player_input
-    p 'Type number from 1 to 9'
     @player_number = gets.chomp.to_i
   end
-
-  # include start_game methods
   include StartGame
-
-  def invalid
-    if @already_used.include?(@player_number) || !(1..9).cover?(@player_number)
-      p "Number #{@player_number} is invalid number."
-    else
-      @already_used.uniq.each_index do |index|
-        @board[@player_number - 1] = index.odd? ? 'O' : 'X'
-      end
-    end
-  end
+  include CheckInvalid
 end
 
 game = TicTacToe.new
