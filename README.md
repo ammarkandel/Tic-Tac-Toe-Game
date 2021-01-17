@@ -2,6 +2,8 @@
 
 Build Tic-Tac-Toe-Game(https://en.wikipedia.org/wiki/Tic-tac-toe) using ruby programming language.
 
+Tic tac toe is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner. ![screenshot](https://ibb.co/MgVNdCs)
+
 ## Getting Started
 
 - Open the terminal.
@@ -17,7 +19,7 @@ Build Tic-Tac-Toe-Game(https://en.wikipedia.org/wiki/Tic-tac-toe) using ruby pro
 
 ## Draw Case
 
-- If the board full and no players win then it is draw.
+- The draw happen when board full and no players win
 
 ## Author
 
