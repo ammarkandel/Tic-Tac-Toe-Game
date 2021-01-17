@@ -4,8 +4,6 @@ Build [Tic-Tac-Toe-Game](https://en.wikipedia.org/wiki/Tic-tac-toe) using ruby p
 
 Tic tac toe is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner.
 
-- ![screenshot](https://i.ibb.co/MgVNdCs/terminal.png)
-
 ## Getting Started
 
 - Open the terminal.
@@ -18,6 +16,7 @@ Tic tac toe is a paper-and-pencil game for two players, X and O, who take turns 
 - Player1 is automaticaly assign 'X' symbol and player2 'O' symbol
 - Choose charater 1 to 9 to start the game
 - You win when 3 of your symbols align vertically, horizontally or diagonally
+  #- ![screenshot](https://i.ibb.co/MgVNdCs/terminal.png)
 
 ## Draw Case
 
