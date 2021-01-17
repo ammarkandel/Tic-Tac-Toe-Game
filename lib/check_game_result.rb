@@ -33,7 +33,7 @@ class CheckGameResult
 
   def check_winer
     if @count_win_x > @count_win_o || @count_win_x < @count_win_o
-      p 'You Win'
+      p 'Congrate You Win'
       true
     else
       false
