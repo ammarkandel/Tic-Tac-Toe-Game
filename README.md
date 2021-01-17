@@ -16,7 +16,7 @@ Tic tac toe is a paper-and-pencil game for two players, X and O, who take turns 
 - Player1 is automaticaly assign 'X' symbol and player2 'O' symbol
 - Choose charater 1 to 9 to start the game
 - You win when 3 of your symbols align vertically, horizontally or diagonally
-- ![screenshot](https://i.ibb.co/MgVNdCs/terminal.png =350x350)
+- Check this ![screenshot](https://ibb.co/MgVNdCs)
 
 ## Draw Case
 
