@@ -1,5 +1,7 @@
 require_relative './win_vars'
 class CheckGameResult
+  attr_reader :board
+
   def initialize(got_board)
     @board = got_board
   end
