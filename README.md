@@ -1,6 +1,13 @@
 # Tic-Tac-Toe-Game
 
-Build Tic-Tac-Toe-Game using ruby programming language
+Build Tic-Tac-Toe-Game(https://en.wikipedia.org/wiki/Tic-tac-toe) using ruby programming language.
+
+## Getting Started
+
+- Open the terminal.
+- Type git clone (git@github.com:ammarkandel/Tic-Tac-Toe-Game.git)
+- cd Tic-Tac-Toe-Game
+- Type main on the terminal to start the game
 
 ## Author
 
