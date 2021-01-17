@@ -5,6 +5,7 @@ class CheckGameResult
   def initialize(got_board)
     @board = got_board
   end
+  # include win variables
   include WinVar
   def loop_on_cases
     @win_cases[@every_move].each do |item|
@@ -35,7 +36,6 @@ class CheckGameResult
 
   def check_winer
     if @count_win_x > @count_win_o || @count_win_x < @count_win_o
-      p 'Congrate You Win'
       true
     else
       false
