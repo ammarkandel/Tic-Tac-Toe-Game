@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require_relative '../lib/check_game_result'
+require_relative '../lib/start_game'
 class TicTacToe
   attr_accessor :board
 
@@ -20,42 +21,13 @@ class TicTacToe
     check_game_result.win
   end
 
-  # Start
-  def win_methods
-    player_input
-    invalid
-    avaliable_inputs
-    p board_interface
-  end
-
-  def game_numbers
-    @all_numbers = (1..9).to_a
-    @already_used = [0]
-  end
-
-  def avaliable_inputs
-    @already_used << @player_number
-    @avaliable = @all_numbers - @already_used
-    p "These numbers are avaliable for next player #{@avaliable}"
-  end
-
-  def start_game
-    game_numbers
-    until winer
-      win_methods
-      break if winer
-
-      if @avaliable.empty?
-        p 'draw'
-        break
-      end
-    end
-  end
-
   def player_input
-    puts 'Type number from 1 to 9'
+    p 'Type number from 1 to 9'
     @player_number = gets.chomp.to_i
   end
+
+  # include start_game methods
+  include StartGame
 
   def invalid
     if @already_used.include?(@player_number) || !(1..9).cover?(@player_number)
@@ -66,8 +38,6 @@ class TicTacToe
       end
     end
   end
-
-  # End
 end
 
 game = TicTacToe.new
