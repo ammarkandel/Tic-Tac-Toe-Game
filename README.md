@@ -9,7 +9,7 @@ Tic tac toe is a paper-and-pencil game for two players, X and O, who take turns 
 - Open the terminal.
 - Type git clone https://github.com/ammarkandel/Tic-Tac-Toe-Game.git
 - cd Tic-Tac-Toe-Game
-- Type main on the terminal to start the game
+- Type bin/main on the terminal to start the game
 
 ## Instructions
 
