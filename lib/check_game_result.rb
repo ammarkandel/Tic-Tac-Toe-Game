@@ -35,10 +35,6 @@ class CheckGameResult
   end
 
   def check_winer
-    if @count_win_x > @count_win_o || @count_win_x < @count_win_o
-      true
-    else
-      false
-    end
+    @count_win_x > @count_win_o || @count_win_x < @count_win_o
   end
 end
