@@ -1,4 +1,4 @@
-require '../lib/check_game_result'
+require './lib/check_game_result'
 
 describe CheckGameResult do
   describe '#win' do
