@@ -5,14 +5,6 @@ class CheckGameResult
   def initialize(got_board)
     @board = got_board
   end
-  # include win variables
-  include WinVar
-  def loop_on_cases
-    @win_cases[@every_move].each do |item|
-      @count_win_x += 1 if @board[item] == 'X'
-      @count_win_o += 1 if @board[item] == 'O'
-    end
-  end
 
   def win
     win_case
@@ -23,6 +15,16 @@ class CheckGameResult
       break if @every_move == @win_leng
     end
     check_winer
+  end
+
+  private
+
+  include WinVar
+  def loop_on_cases
+    @win_cases[@every_move].each do |item|
+      @count_win_x += 1 if @board[item] == 'X'
+      @count_win_o += 1 if @board[item] == 'O'
+    end
   end
 
   def check_which_win
